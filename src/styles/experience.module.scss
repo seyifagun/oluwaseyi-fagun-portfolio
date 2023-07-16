@@ -1,0 +1,164 @@
+.experience {
+    margin: 15rem auto;
+    max-width: 900px; //subject to change too 700px
+    .title {
+        color: var(--lightest-slate);
+        position: relative;
+        h2 {
+            margin-bottom: 2rem;
+            font-size: var(--tx2large);
+            font-weight: 700;
+            &::before {
+              counter-increment: title;
+              content: "0" counter(title) ".";
+              margin-right: 0.5rem;
+              color: var(--theme-color);
+            }
+            &::after {
+              content: "";
+              display: block;
+              position: absolute;
+              top: 25px;
+              width: 300px;
+              height: 2px;
+              margin-left: 460px;
+              background-color: var(--lightest-navy);
+            }
+        }
+    }
+    & .container {
+        display: grid;
+        grid-template-columns: 20% 80%;
+        gap: 1rem;
+        & .expSlider {
+            list-style-type: none;
+            position: relative;
+            height: max-content;
+            &__item {
+                height: 2.5rem;
+                padding: 0 1.5rem;
+                display: flex;
+                vertical-align: middle;
+                cursor: pointer;
+                width: 100%;
+                span {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  color: var(--slate);
+                  font-size: var(--tsm1);
+                }
+                &:hover {
+                    background-color: var(--light-navy);
+                    span {
+                      color: var(--theme-color);
+                    }
+                }
+                &_selected {
+                    span {
+                        color: var(--light-slate);
+                    }
+                }
+            }
+            & .underline {
+                background-color: var(--theme-color);
+                position: absolute;
+                left: -0.5px;
+                top: 0;
+                height: 2.5rem;
+                width: 3px;
+                transition: 0.3s ease-in-out;
+            }
+            &::before {
+                position: absolute;
+                left: -0px;
+                content: "";
+                height: 100%;
+                width: 1px;
+                background-color: var(--lightest-navy);
+            }
+        }
+        & .expDetails {
+            height: 40vh;
+            &__position {
+                color: var(--lightest-slate);
+                &_company {
+                    color: var(--theme-color);
+                }
+            }
+            &__range {
+                padding: 1rem 0;
+                color: var(--light-slate);
+            }
+            &__list {
+                list-style-type: none;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                margin-top: 1rem;
+                padding-left: 20px;
+                &_item{
+                    position: relative;
+                    font-weight: 500;
+                    color: var(--slate);
+                    &::before {
+                        content: "▹";
+                        position: absolute;
+                        left: -20px;
+                        top: 6px;
+                        color: var(--theme-color);
+                        line-height: 12px;
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 968px) {
+        .title {
+          h2 {
+            &::after {
+              width: 100px;
+            }
+          }
+        }
+    }
+    @media screen and (max-width: 600px) {
+        margin: 5rem auto;
+        .container {
+          grid-template-columns: 1fr;
+          padding: 1rem;
+          .expDetails {
+            height: max-content;
+          }
+          & .expSlider {
+            display: flex;
+            overflow-x: scroll;
+            &::-webkit-scrollbar {
+                width: 5px;
+                &-track {
+                    background-color: var(--background-color)
+                }
+                &-thumb {
+                    background-color: var(--dark-slate);
+                    border-radius: 0px;
+                }
+            }
+            &::before {
+              display: none;
+            }
+            & .underline {
+              display: none;
+            }
+          }
+        }
+    }
+    @media screen and (max-width: 480px) {
+        .title {
+          h2 {
+            &::after {
+              display: none;
+            }
+          }
+        }
+    }
+}

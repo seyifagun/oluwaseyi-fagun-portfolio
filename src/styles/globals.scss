@@ -1,0 +1,53 @@
+@import './mixins';
+@import "./reuseables";
+@import "./variables";
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body, html{
+  scroll-behavior: smooth !important;
+  height: 100vh; 
+  overflow-x: hidden;
+  background-color: var(--background-color);
+  max-width: 100vw;
+  font-family: 'Quicksand', sans-serif;
+  counter-reset: title;
+}
+
+p {
+  font-size: 14px;
+  @include smartPhone() {
+    font-size: 14px - 2px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  &-track {
+    background-color: var(--background-color)
+  }
+  &-thumb {
+    background-color: var(--dark-slate);
+    border-radius: 10px;
+  }
+}
+
+.underline {
+  background-color: var(--theme-color);
+  position: absolute;
+  left: -0.5px;
+  top: 0;
+  height: 2.5rem;
+  width: 3px;
+  transition: 0.3s ease-in-out;
+}
+
+@mixin link {
+  @include link;
+}
